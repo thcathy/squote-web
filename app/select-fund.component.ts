@@ -1,7 +1,8 @@
-import {Component} from 'angular2/core';
+import {Component, OnChanges, SimpleChange} from 'angular2/core';
 import {NgForm} from 'angular2/common';
 import {HoldingStock} from './holding-stock';
 import {SquoteService} from './squote-serivce';
+import {Fund} from './fund';
 
 @Component({
   selector: 'select-fund',
@@ -9,8 +10,9 @@ import {SquoteService} from './squote-serivce';
     <div *ngIf="holding">
       <p>Created: {{holding | json}}</p>
       <ul *ngFor="#f of funds">
-        <li>{{f.name}}: <span *ngIf="f.holdings[holding.code]">{{f.holdings[holding.code] | json}}</span></li>
+        <li>Add to: <a (click)="onSelectFund(f)">{{f.name}}: <span *ngIf="f.holdings[holding.code]">{{f.holdings[holding.code] | json}}</span></a></li>
       </ul>
+      <div *ngIf="updatedFund">Updated Fund ({{updatedFund.name}}): {{updatedFund.holdings[holding.code] | json}}</div>
     </div>
   `,
   inputs: ['holding']
@@ -19,6 +21,7 @@ import {SquoteService} from './squote-serivce';
 export class SelectFundComponent implements OnChanges {
   holding: HoldingStock;
   funds = [];
+  updatedFund: Fund;
 
   constructor(
     private squoteService: SquoteService
@@ -27,9 +30,15 @@ export class SelectFundComponent implements OnChanges {
   ngOnChanges(changes: {[propName: string]: SimpleChange}) {
     this.funds = [];
     this.squoteService.getAllFund()
-      .subscribe(
-        fund => this.funds.push(fund),
-        e =>  console.error(e)
-      );
+      .subscribe(fund => this.funds.push(fund));
+  }
+
+  onSelectFund(fund: Fund) {
+    console.log('Add holding to :' + fund.name);
+    this.squoteService.updateFundByHolding(fund.name, this.holding.id)
+        .subscribe(fund => {
+          this.updatedFund = fund;
+          this.funds = [];
+        });
   }
 }

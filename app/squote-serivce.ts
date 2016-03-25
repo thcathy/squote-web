@@ -11,12 +11,13 @@ export class SquoteService {
 
   private host = 'http://localhost:8190/'
   private createHoldingStockUrl = this.host + 'rest/createholding/create/?';  // URL to web api
-  private allFundUrl = this.host + 'rest/fund/getall'
+  private allFundUrl = this.host + 'rest/fund/getall';
+  private updateFundByHoldingUrl = this.host + 'rest/createholding/updatefund/?';
 
   createHoldingStock(message: string, hscei: string) {
     let queryString = 'message=' + encodeURIComponent(message) + '&hscei=' + hscei;
     return this.http.get(this.createHoldingStockUrl + queryString)
-            .do(resp => console.info(resp.text()))
+            .do(resp => console.info('createHoldingStock response: ' + resp.text()))
             .map(res => <HoldingStock> res.json())
             .catch(this.handleError);
   }
@@ -25,6 +26,15 @@ export class SquoteService {
     return this.http.get(this.allFundUrl)
             .flatMap(res => res.json())
             .map(r => <Fund> r)
+            .catch(this.handleError);
+  }
+
+  updateFundByHolding(fundName: string, holdingId: string) {
+    let queryString = 'fundName=' + fundName + '&holdingId=' + encodeURIComponent(holdingId);
+    console.log(queryString);
+    return this.http.get(this.updateFundByHoldingUrl + queryString)
+            .do(resp => console.info('updateFundByHolding response: ' + resp.text()))
+            .map(res => <Fund> res.json())
             .catch(this.handleError);
   }
 
