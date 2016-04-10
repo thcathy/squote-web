@@ -8,8 +8,8 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "outDir": "./build",
-    "sourceRoot": "./app"
+    "compileOnSave": false,
+    "outDir": "./build"
   },
   "exclude": [
     "node_modules",

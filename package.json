@@ -2,7 +2,7 @@
   "name": "squote-web",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "gulp serve",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
@@ -23,6 +23,7 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
+    "browser-sync": "^2.11.2",
     "concurrently": "^2.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
