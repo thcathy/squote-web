@@ -4,15 +4,15 @@ import {Observable}     from 'rxjs/Observable';
 
 import {HoldingStock} from './holding-stock';
 import {Fund} from './fund';
+import {API_ENDPOINT} from './constants';
 
 @Injectable()
 export class SquoteService {
   constructor (private http: Http) {}
 
-  private host = 'http://localhost:8190/'
-  private createHoldingStockUrl = this.host + 'rest/createholding/create/?';  // URL to web api
-  private allFundUrl = this.host + 'rest/fund/getall';
-  private updateFundByHoldingUrl = this.host + 'rest/createholding/updatefund/?';
+  private createHoldingStockUrl = API_ENDPOINT + 'rest/createholding/create/?';  // URL to web api
+  private allFundUrl = API_ENDPOINT + 'rest/fund/getall';
+  private updateFundByHoldingUrl = API_ENDPOINT + 'rest/createholding/updatefund/?';
 
   createHoldingStock(message: string, hscei: string) {
     let queryString = 'message=' + encodeURIComponent(message) + '&hscei=' + hscei;
