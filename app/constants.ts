@@ -1,1 +1,1 @@
-export var API_ENDPOINT = 'http://localhost:8190/';
+export var API_ENDPOINT = '@@API_ENDPOINT';
