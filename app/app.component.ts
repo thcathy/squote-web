@@ -5,21 +5,19 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 import {HTTP_PROVIDERS}    from 'angular2/http';
 
 @Component({
+    directives: [CreateHoldingComponent, ROUTER_DIRECTIVES],
+    providers: [SquoteService, ROUTER_PROVIDERS, HTTP_PROVIDERS],
     selector: 'my-app',
-//   template: '<hero-form></hero-form>',
     template: `
       <create-holding></create-holding>
     `,
-    directives: [CreateHoldingComponent, ROUTER_DIRECTIVES],
-    providers: [SquoteService, ROUTER_PROVIDERS, HTTP_PROVIDERS]
 })
 @RouteConfig([
   {
-    path: '/create',
+    component: CreateHoldingComponent,
     name: 'Create',
-    component: CreateHoldingComponent
+    path: '/create',
   },
-
 ])
 
 export class AppComponent { }

@@ -1,8 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {NgForm} from 'angular2/common';
-
 import {SquoteService} from './squote-serivce';
-import {Fund} from './fund';
 import {HoldingStock} from './holding-stock';
 import {SelectFundComponent} from './select-fund.component';
 
@@ -11,12 +8,12 @@ import {SelectFundComponent} from './select-fund.component';
   template: `
     <div>
       <form>
-        <textarea rows="8" cols="50" [(ngModel)]="message"></textarea>
-        <br /> hscei:<input type="text" style="width: 40px;" [(ngModel)]="hscei" /><br />
-        <input type="submit" (click)="onSubmit()" />
+        <textarea rows='8' cols='50' [(ngModel)]='message'></textarea>
+        <br /> hscei:<input type='text' style='width: 40px;' [(ngModel)]='hscei' /><br />
+        <input type='submit' (click)='onSubmit()' />
       </form>
       <p>{{resultMessage}}</p>
-      <div *ngIf="errorMessage">{{errorMessage}}</div>
+      <div *ngIf='errorMessage'>{{errorMessage}}</div>
 
       <select-fund [holding]='createdHolding'></select-fund>
     </div>
@@ -35,14 +32,12 @@ export class CreateHoldingComponent implements OnInit {
     private squoteService: SquoteService
   ) { }
 
-  ngOnInit() {  }
-
   onSubmit() {
     console.log('Submit: ', this.message, this.hscei);
     this.squoteService.createHoldingStock(this.message, this.hscei)
                    .subscribe(
                      holding => this.createdHolding = holding,
-                     error =>  this.errorMessage = <any>error);
+                     error =>  this.errorMessage = error as any);
   }
 
 }

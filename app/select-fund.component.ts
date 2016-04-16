@@ -1,5 +1,4 @@
 import {Component, OnChanges, SimpleChange} from 'angular2/core';
-import {NgForm} from 'angular2/common';
 import {HoldingStock} from './holding-stock';
 import {SquoteService} from './squote-serivce';
 import {Fund} from './fund';
@@ -10,7 +9,9 @@ import {Fund} from './fund';
     <div *ngIf="holding">
       <p>Created: {{holding | json}}</p>
       <ul *ngFor="#f of funds">
-        <li>Add to: <a (click)="onSelectFund(f)">{{f.name}}: <span *ngIf="f.holdings[holding.code]">{{f.holdings[holding.code] | json}}</span></a></li>
+        <li>Add to: <a (click)="onSelectFund(f)">{{f.name}}:
+          <span *ngIf="f.holdings[holding.code]">{{f.holdings[holding.code] | json}}</span></a>
+        </li>
       </ul>
       <div *ngIf="updatedFund">Updated Fund ({{updatedFund.name}}): {{updatedFund.holdings[holding.code] | json}}</div>
     </div>
