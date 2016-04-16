@@ -38,9 +38,10 @@ export class SquoteService {
             .catch(this.handleError);
   }
 
-  private handleError (error: Response) {
+  private handleError (error: any) {
+    let errorMsg = error.message || 'Server error';
     console.error(error);
-    return Observable.throw(error.text());
+    return Observable.throw(errorMsg);
   }
 
 }

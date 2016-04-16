@@ -14,12 +14,14 @@ import {Fund} from './fund';
       </ul>
       <div *ngIf="updatedFund">Updated Fund ({{updatedFund.name}}): {{updatedFund.holdings[holding.code] | json}}</div>
     </div>
+    <div>{{errorMessage}}</div>
   `,
   inputs: ['holding']
 })
 
 export class SelectFundComponent implements OnChanges {
   holding: HoldingStock;
+  errorMessage: string;
   funds = [];
   updatedFund: Fund;
 
@@ -30,7 +32,10 @@ export class SelectFundComponent implements OnChanges {
   ngOnChanges(changes: {[propName: string]: SimpleChange}) {
     this.funds = [];
     this.squoteService.getAllFund()
-      .subscribe(fund => this.funds.push(fund));
+      .subscribe(
+        fund => this.funds.push(fund),
+        error =>  this.errorMessage = <any>error
+      );
   }
 
   onSelectFund(fund: Fund) {
@@ -39,6 +44,7 @@ export class SelectFundComponent implements OnChanges {
         .subscribe(fund => {
           this.updatedFund = fund;
           this.funds = [];
-        });
+        },
+        error =>  this.errorMessage = <any>error);
   }
 }
