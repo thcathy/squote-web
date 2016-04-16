@@ -7,7 +7,6 @@ This is the interface of my personal website using Angular 2 (Typescript)
 ```
 npm install
 npm run gulp build
-// packaged to folder 'dist'
 ```
 
 #### Run development env with browser sync ####
@@ -18,7 +17,7 @@ npm run gulp build
 
 ### Configuration ###
 
-Configuration are stored in config/config.js or config-prd.js
+Configuration are stored in config/config.json or config-prd.json
 
 ### Note ###
 
