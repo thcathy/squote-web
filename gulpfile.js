@@ -18,7 +18,7 @@ gulp.task('clean', function () {
 });
 
 // TypeScript compile
-gulp.task('compile:ts', ['clean'], function () {
+gulp.task('compile-ts', ['clean'], function () {
   return gulp
     .src(gulpConfig.tsSrc)
     .pipe(sourcemaps.init())
@@ -28,10 +28,10 @@ gulp.task('compile:ts', ['clean'], function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(gulpConfig.staticFiles.concat([gulpConfig.tsSrc, 'config/**']),['compile:ts', 'copy:static', 'replace:config']);
+  gulp.watch(gulpConfig.staticFiles.concat([gulpConfig.tsSrc, 'config/**']),['compile-ts', 'copy-static', 'replace-config']);
 });
 
-gulp.task('replace:config', ['compile:ts'], function() {
+gulp.task('replace-config', ['compile-ts'], function() {
   var configFile = env.production() ? gulpConfig.configFileProd : gulpConfig.configFile;
   var config = JSON.parse(fs.readFileSync(configFile));
   console.log(config.patterns);
@@ -41,7 +41,7 @@ gulp.task('replace:config', ['compile:ts'], function() {
     .pipe(gulp.dest(jsDict));
 });
 
-gulp.task('copy:static', ['clean'], function() {
+gulp.task('copy-static', ['clean'], function() {
   gulp.src(gulpConfig.staticFiles, { base : './' })
     .pipe(gulp.dest(gulpConfig.dist));
 
@@ -49,7 +49,7 @@ gulp.task('copy:static', ['clean'], function() {
     .pipe(gulp.dest(gulpConfig.dist + '/node_modules'))
 });
 
-gulp.task('serve', ['copy:static','compile:ts', 'replace:config', 'watch'], function() {
+gulp.task('serve', ['copy-static','compile-ts', 'replace-config', 'watch'], function() {
   process.stdout.write('Starting browserSync');
   browserSync({
     port: 3000,
@@ -64,13 +64,13 @@ gulp.task('serve', ['copy:static','compile:ts', 'replace:config', 'watch'], func
   });
 });
 
-gulp.task('build:prod', function(callback) {
-  runSequence('set:prod-env', 'build', callback);
+gulp.task('build-prod', function(callback) {
+  runSequence('set-prod-env', 'build', callback);
 });
 
-gulp.task('set:prod-env', function() {
+gulp.task('set-prod-env', function() {
     env.current(env.production);
 })
 
-gulp.task('build', ['compile:ts', 'copy:static', 'replace:config']);
+gulp.task('build', ['compile-ts', 'copy-static', 'replace-config']);
 gulp.task('default', ['serve']);
