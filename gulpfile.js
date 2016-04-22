@@ -6,7 +6,6 @@ var gulp = require('gulp'),
    replace = require('gulp-replace-task'),
    env = require('gulp-environments'),
    fs = require("fs"),
-   runSequence = require('run-sequence'),
    tscConfig = require('./tsconfig.json'),
    gulpConfig = require('./gulpconfig.json');
 
