@@ -6,6 +6,7 @@ var gulp = require('gulp'),
    replace = require('gulp-replace-task'),
    env = require('gulp-environments'),
    fs = require("fs"),
+   runSequence = require('run-sequence'),
    tscConfig = require('./tsconfig.json'),
    gulpConfig = require('./gulpconfig.json');
 
@@ -62,6 +63,14 @@ gulp.task('serve', ['copy:static','compile:ts', 'replace:config', 'watch'], func
     }
   });
 });
+
+gulp.task('build:prod', function(callback) {
+  runSequence('set:prod-env', 'build', callback);
+});
+
+gulp.task('set:prod-env', function() {
+    env.current(env.production);
+})
 
 gulp.task('build', ['compile:ts', 'copy:static', 'replace:config']);
 gulp.task('default', ['serve']);

@@ -32,6 +32,9 @@ export class CreateHoldingComponent implements OnInit {
     private squoteService: SquoteService
   ) { }
 
+  ngOnInit() {
+  }
+
   onSubmit() {
     console.log('Submit: ', this.message, this.hscei);
     this.squoteService.createHoldingStock(this.message, this.hscei)
