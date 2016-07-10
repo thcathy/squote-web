@@ -1,40 +1,25 @@
 <html>
   <head>
+    <base href="/">
     <title>Angular 2 QuickStart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="forms.css">
 
+      <!-- Polyfill(s) for older browsers -->
+<!--
+      <script src="node_modules/core-js/client/shim.min.js"></script>
+-->
+      <script src="node_modules/zone.js/dist/zone.js"></script>
+      <script src="node_modules/reflect-metadata/Reflect.js"></script>
+      <script src="node_modules/systemjs/dist/system.src.js"></script>
+      <script src="http://cdn.auth0.com/js/lock/10.0.0-rc.1/lock.min.js"></script>
 
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/router.dev.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-    <script src="node_modules/angular2/bundles/http.dev.js"></script>
-
-
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-    <link rel="stylesheet" href="forms.css">
-
+      <script src="systemjs.config.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
-      System.config({
-        packages: {
-          build: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('build/main')
-            .then(null, console.error.bind(console));
+      System.import('app').then(null, console.error.bind(console));
     </script>
   </head>
 

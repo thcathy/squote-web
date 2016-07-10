@@ -1,23 +1,26 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {CreateHoldingComponent} from './create-holding.component';
 import {SquoteService} from './squote-serivce';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
-import {HTTP_PROVIDERS}    from 'angular2/http';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import {HTTP_PROVIDERS}    from '@angular/http';
+import {Auth} from "./auth.service";
 
+//noinspection TypeScriptValidateTypes
 @Component({
     directives: [CreateHoldingComponent, ROUTER_DIRECTIVES],
-    providers: [SquoteService, ROUTER_PROVIDERS, HTTP_PROVIDERS],
+    providers: [SquoteService, Auth, HTTP_PROVIDERS],
     selector: 'my-app',
     template: `
       <create-holding></create-holding>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Auth0 - Angular 2</a>
+        <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+        <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
+      </div>
     `,
 })
-@RouteConfig([
-  {
-    component: CreateHoldingComponent,
-    name: 'Create',
-    path: '/create',
-  },
-])
 
-export class AppComponent { }
+export class AppComponent {
+    constructor(private auth: Auth) {}
+}
+

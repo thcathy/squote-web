@@ -10,7 +10,7 @@ var gulp = require('gulp'),
    tscConfig = require('./tsconfig.json'),
    gulpConfig = require('./gulpconfig.json');
 
-var jsDict = gulpConfig.dist + '/build';
+var jsDict = gulpConfig.dist;
 
 // clean the contents of the distribution directory
 gulp.task('clean', function () {
@@ -36,7 +36,7 @@ gulp.task('replace-config', ['compile-ts'], function() {
   var config = JSON.parse(fs.readFileSync(configFile));
   console.log(config.patterns);
 
-  gulp.src(jsDict + '/constants.js*')
+  gulp.src(jsDict + '/**/constants.js*')
     .pipe(replace(config))
     .pipe(gulp.dest(jsDict));
 });

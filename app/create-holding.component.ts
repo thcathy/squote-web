@@ -1,7 +1,8 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit} from '@angular/core';
 import {SquoteService} from './squote-serivce';
 import {HoldingStock} from './holding-stock';
 import {SelectFundComponent} from './select-fund.component';
+import {Fund} from "./fund";
 
 @Component({
   selector: 'create-holding',
@@ -26,8 +27,8 @@ export class CreateHoldingComponent implements OnInit {
   hscei = '';
   errorMessage: string;
   createdHolding: HoldingStock;
-  funds = [];
-
+  funds: Fund[];
+  
   constructor(
     private squoteService: SquoteService
   ) { }

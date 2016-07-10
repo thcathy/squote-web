@@ -1,4 +1,4 @@
-import {Component, OnChanges, SimpleChange} from 'angular2/core';
+import {Component, OnChanges, SimpleChange} from '@angular/core';
 import {HoldingStock} from './holding-stock';
 import {SquoteService} from './squote-serivce';
 import {Fund} from './fund';
@@ -23,7 +23,7 @@ import {Fund} from './fund';
 export class SelectFundComponent implements OnChanges {
   holding: HoldingStock;
   errorMessage: string;
-  funds = [];
+  funds: Fund[];
   updatedFund: Fund;
 
   constructor(

@@ -1,5 +1,5 @@
 {
   "patterns": [
-    {"match": "API_ENDPOINT", "replacement": "http://localhost:8090/"}
+    {"match": "API_ENDPOINT", "replacement": "http://localhost:8190/"}
   ]
 }

@@ -36,3 +36,6 @@ jspm_packages
 build
 dist
 typings
+
+.idea
+*.iml
