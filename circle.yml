@@ -1,0 +1,7 @@
+general:
+  artifacts:
+    - "dist"
+
+deployment:
+  pre:
+    - npm run gulp build-prod
