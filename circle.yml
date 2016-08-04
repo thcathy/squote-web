@@ -5,3 +5,11 @@ general:
 test:
   post:
     - npm run gulp build-prod
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker build -t thcathy/nginx-proxy -f docker/Dockerfile .
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push thcathy/nginx-proxy
