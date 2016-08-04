@@ -25,10 +25,10 @@ A nginx proxy server hosting the squote interface, which built by angular 2, and
 *Pre-requisites*: Started ESL and [Squote](https://github.com/thcathy/squote)
 
 ```bash
-docker run -d --name <container name> \
--p <host's port>:80 \
---link <squote container name> --link <esl container name> \
-thcathy/nginx-proxy
+docker run thcathy/nginx-proxy -d --name <container name> \
+  -p <host's port>:80 \
+  --link <squote container name> \
+  --link <esl container name> \
 ```
 
 ### Note ###
