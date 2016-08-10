@@ -1,4 +1,4 @@
-# Squote-web #
+# Squote-web [![CircleCI](https://circleci.com/gh/thcathy/squote-web.svg?style=svg)](https://circleci.com/gh/thcathy/squote-web)
 
 This is the interface of my personal website using Angular 2 (Typescript)
 
