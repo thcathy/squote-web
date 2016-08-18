@@ -4,6 +4,7 @@ import {SquoteService} from './squote-serivce';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {HTTP_PROVIDERS}    from '@angular/http';
 import {Auth} from "./auth.service";
+import 'rxjs/Rx';
 
 //noinspection TypeScriptValidateTypes
 @Component({

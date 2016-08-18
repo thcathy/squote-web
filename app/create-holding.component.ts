@@ -9,8 +9,8 @@ import {Fund} from "./fund";
   template: `
     <div>
       <form>
-        <textarea rows='8' cols='50' [(ngModel)]='message'></textarea>
-        <br /> hscei:<input type='text' style='width: 40px;' [(ngModel)]='hscei' /><br />
+        <textarea rows='8' cols='50' [(ngModel)]='message' [ngModelOptions]="{standalone: true}"></textarea>
+        <br /> hscei:<input type='text' style='width: 40px;' [(ngModel)]='hscei' [ngModelOptions]="{standalone: true}"/><br />
         <input type='submit' (click)='onSubmit()' />
       </form>
       <p>{{resultMessage}}</p>
