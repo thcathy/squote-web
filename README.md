@@ -6,27 +6,24 @@ This is the interface of my personal website using Angular 2 (Typescript)
 
 ```
 npm install
-npm run gulp build
+npm run build
 ```
 
-#### Run development env with browser sync ####
-```npm run gulp serve```
+#### Run development env ####
+```API_HOST=<squote server's host> npm start ```
 
-#### Build Production env ####
-```NODE_ENV=production npm run gulp build```
-
-### Configuration ###
-
-Configuration are stored in config/config.json or config-prd.json
+#### Environment Variable ####
+API_HOST: Host of squote server
 
 ### Docker ###
 A nginx proxy server hosting the squote interface, which built by angular 2, and forward request to ESL and Squote
 
-*Pre-requisites*: Started ESL and [Squote](https://github.com/thcathy/squote)
+*Pre-requisites*: Started [Squote](https://github.com/thcathy/squote)
 
 ```bash
 docker run thcathy/nginx-proxy -d --name <container name> \
   -p <host's port>:80 \
+  -e API_HOST=<squote container name>
   --link <squote container name> \
   --link <esl container name> \
 ```

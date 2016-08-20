@@ -4,7 +4,10 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }     from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import {SelectFundComponent} from './select-fund.component';
+import {CreateHoldingComponent} from './create-holding.component';
 
+import 'rxjs/Rx';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
@@ -17,12 +20,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
 @NgModule({
-  imports:      [ 
-  	BrowserModule,
-  	FormsModule,
-  	HttpModule
-  ],
-  declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ]
+    imports:      [
+        BrowserModule,
+        FormsModule,
+        HttpModule
+    ],
+    declarations: [
+        AppComponent,
+        SelectFundComponent,
+        CreateHoldingComponent
+    ],
+    bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
