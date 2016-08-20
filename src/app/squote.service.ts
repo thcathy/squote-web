@@ -9,8 +9,7 @@ import {API_ENDPOINT} from './constants';
 @Injectable()
 export class SquoteService {
     constructor (private http: Http) {
-        console.log(process.env.API_HOST);
-        console.log(API_ENDPOINT);
+        console.log('API ENDPOINT:' + API_ENDPOINT);
     }
 
     private createHoldingStockUrl = 'http://' + API_ENDPOINT + '/rest/createholding/create/?';  // URL to web api
