@@ -2,20 +2,19 @@
 
 This is the interface of my personal website using Angular 2 (Typescript)
 
-### How to build ###
-
+### How to build
 ```
 npm install
-npm run build
+API_HOST=<squote server's host> npm run build
 ```
 
-#### Run development env ####
+#### Run development env
 ```API_HOST=<squote server's host> npm start ```
 
-#### Environment Variable ####
+#### Environment Variable
 API_HOST: Host of squote server
 
-### Docker ###
+### Docker
 A nginx proxy server hosting the squote interface, which built by angular 2, and forward request to ESL and Squote
 
 *Pre-requisites*: Started [Squote](https://github.com/thcathy/squote)
@@ -23,7 +22,6 @@ A nginx proxy server hosting the squote interface, which built by angular 2, and
 ```bash
 docker run -d --name <container name> \
   -p <host's port>:80 \
-  -e API_HOST=<squote container name>
   --link <squote container name> \
   --link <esl container name> \
   thcathy/nginx-proxy 
