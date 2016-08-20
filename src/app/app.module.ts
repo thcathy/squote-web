@@ -4,8 +4,8 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }     from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import {SelectFundComponent} from './select-fund.component';
 import {CreateHoldingComponent} from './create-holding.component';
+import {SelectFundComponent} from './select-fund.component';
 
 import 'rxjs/Rx';
 import 'rxjs/add/observable/of';
@@ -27,8 +27,8 @@ import 'rxjs/add/operator/switchMap';
     ],
     declarations: [
         AppComponent,
-        SelectFundComponent,
-        CreateHoldingComponent
+        CreateHoldingComponent,
+        SelectFundComponent
     ],
     bootstrap:    [ AppComponent ]
 })
