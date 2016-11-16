@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 
 import {SquoteService} from './squote.service'
 
+import './rxjs-operators';
+
 import '../../public/css/style.css';
 
 @Component({

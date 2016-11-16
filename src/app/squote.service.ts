@@ -26,7 +26,7 @@ export class SquoteService {
 
     getAllFund() {
         return this.http.get(this.allFundUrl)
-            .flatMap(res => res.json())
+            .mergeMap(res => res.json())
             .map(r => <Fund> r)
             .catch(this.handleError);
     }

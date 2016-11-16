@@ -1,10 +1,10 @@
 <div>
     <form>
-        <textarea rows='8' cols='50' [(ngModel)]='message' [ngModelOptions]="{standalone: true}"></textarea>
+        <textarea class="message" rows='8' cols='50' [(ngModel)]='message' [ngModelOptions]="{standalone: true}"></textarea>
         <br /> hscei:<input type='text' style='width: 40px;' [(ngModel)]='hscei' [ngModelOptions]="{standalone: true}"/><br />
         <input type='submit' (click)='onSubmit()' />
     </form>
-    <p>{{resultMessage}}</p>
+    <p>{{message}}</p>
     <div *ngIf='errorMessage'>{{errorMessage}}</div>
     <select-fund [holding]='createdHolding'></select-fund>
 </div>
