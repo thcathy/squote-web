@@ -8,6 +8,10 @@ machine:
   node:
     version: v6.1.0
 
+dependencies:
+  pre:
+    - npm install typings
+
 test:
   post:
     - npm run build
