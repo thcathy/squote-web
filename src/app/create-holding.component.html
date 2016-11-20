@@ -1,10 +1,9 @@
 <div>
     <form>
         <textarea class="message" rows='8' cols='50' [(ngModel)]='message' [ngModelOptions]="{standalone: true}"></textarea>
-        <br /> hscei:<input type='text' style='width: 40px;' [(ngModel)]='hscei' [ngModelOptions]="{standalone: true}"/><br />
-        <input type='submit' (click)='onSubmit()' />
+        <br /> hscei:<input class="hscei" type='text' style='width: 40px;' [(ngModel)]='hscei' [ngModelOptions]="{standalone: true}"/><br />
+        <input type='submit' (click)='onSubmit()' /><input class="clearButton" type='button' (click)='onClear()' value="clear" />
     </form>
-    <p>{{message}}</p>
     <div *ngIf='errorMessage'>{{errorMessage}}</div>
     <select-fund [holding]='createdHolding'></select-fund>
 </div>

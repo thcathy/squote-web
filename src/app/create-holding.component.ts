@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SquoteService} from './squote.service';
 import {HoldingStock} from './holding-stock';
 
-import {Fund} from "./fund";
-
 @Component({
     selector: 'create-holding',
     templateUrl: './create-holding.component.html',
@@ -14,7 +12,6 @@ export class CreateHoldingComponent implements OnInit {
     hscei = '';
     errorMessage: string;
     createdHolding: HoldingStock;
-    funds: Fund[];
 
     constructor(
         private squoteService: SquoteService
@@ -29,6 +26,12 @@ export class CreateHoldingComponent implements OnInit {
             .subscribe(
                 holding => this.createdHolding = holding,
                 error =>  this.errorMessage = error as any);
+    }
+
+    onClear() {
+        this.message = '';
+        this.hscei = '';
+        this.errorMessage = '';
     }
 
 }

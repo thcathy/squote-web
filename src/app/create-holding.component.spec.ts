@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
@@ -12,9 +12,10 @@ import {SelectFundComponent} from "./select-fund.component";
 
 let fixture: ComponentFixture<CreateHoldingComponent>;
 let comp:    CreateHoldingComponent;
-let de:      DebugElement;
-let el:      HTMLElement;
 let squoteService: SquoteService;
+let clearButton;
+let textarea;
+let hscei;
 
 describe('Test create holding component', () => {
 
@@ -27,16 +28,30 @@ describe('Test create holding component', () => {
 
         fixture = TestBed.createComponent(CreateHoldingComponent);
         comp = fixture.componentInstance;
+        fixture.detectChanges();
 
         squoteService = fixture.debugElement.injector.get(SquoteService);
 
 //        let spy = spyOn(squoteService, 'getQuote').and.returnValue(Promise.resolve(''));
 
-        de = fixture.debugElement.query(By.css('textarea'));
-        el = de.nativeElement;
+        clearButton = fixture.debugElement.query(By.css('.clearButton')).nativeElement;
+        textarea = fixture.debugElement.query(By.css('textarea')).nativeElement;
+        hscei = fixture.debugElement.query(By.css('.hscei')).nativeElement;
     })
 
-    it('result message should be empty', () => {
+    it('result message should be empty after init', () => {
         expect(fixture.componentInstance.message).toBe('');
+    });
+
+    it('click clear button will clear all content', () => {
+        textarea.value = 'some text';
+        hscei.value = '12345';
+        comp.errorMessage = 'some error';
+
+        clearButton.click();
+
+        expect(textarea.textContent).toBe('');
+        expect(hscei.textContent).toBe('');
+        expect(comp.errorMessage).toBe('');
     });
 });
